@@ -16,12 +16,16 @@ export class MotionComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.motionS.startMotionDetection((data: MotionData) => {
-      this.motionData = data;
-      console.log('Motion Data:', this.motionData);
+      setTimeout(() => {
+        this.motionData = data;
+        console.log('Motion Data (delayed):', this.motionData);
+      }, 2000);
     });
   }
 
   ngOnDestroy(): void {
+    
     this.motionS.stopMotionDetection();
   }
+  
 }
